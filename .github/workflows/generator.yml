@@ -1,11 +1,9 @@
 # 参考 https://github.com/lework/jenkins-update-center/blob/master/.github/workflows/generator.yml
-
-
- name:  generator
+name: generator
 
 on:
   schedule:
-    - cron:  '0 1 * * *'
+    - cron: '0 1 * * *'
   workflow_dispatch:
 
 jobs:
@@ -13,21 +11,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v5
-      with:
-        python-version: '3.10'
-    - name: Run script
-      run: |
-        python get_jenkins_all_version.py -t ${{ secrets.GIT_TOKEN }}
-    - name: Push
-      uses: github-actions-x/commit@v2.9
-      with:
-        github-token: ${{ secrets.GIT_TOKEN }}
-        push-branch: 'master'
-        commit-message: 'This is an github action commit.'
-        name: lpx0312
-        email: lpx_0312@163.com
-        force-add: 'true'
-        force-push: 'true'
+      - uses: actions/checkout@v4
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Run script
+        run: |
+          python get_jenkins_all_version.py -t ${{ secrets.GIT_TOKEN }}
+
+      - name: Push
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GIT_TOKEN }}
+          push-branch: 'master'
+          commit-message: 'This is a github action commit.'
+          name: lpx0312
+          email: lpx_0312@163.com
+          force-add: 'true'
+          force-push: 'true'
