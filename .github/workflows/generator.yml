@@ -20,11 +20,11 @@ jobs:
         python-version: '3.10'
     - name: Run script
       run: |
-        python get_jenkins_all_version.py -t ${{ secrets.GITHUB_TOKEN }}
+        python get_jenkins_all_version.py -t ${{ secrets.GIT_TOKEN }}
     - name: Push
       uses: github-actions-x/commit@v2.9
       with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}
+        github-token: ${{ secrets.GIT_TOKEN }}
         push-branch: 'master'
         commit-message: 'This is an github action commit.'
         name: lpx0312
