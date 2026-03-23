@@ -1,4 +1,3 @@
-# 参考 https://github.com/lework/jenkins-update-center/blob/master/.github/workflows/generator.yml
 name: generator
 
 on:
