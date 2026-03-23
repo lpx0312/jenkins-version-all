@@ -24,22 +24,22 @@ jobs:
         run: |
           python get_jenkins_all_version.py -t ${{ secrets.GIT_TOKEN }}
 
-      - name: Commit & Push
-        run: |
-          git config user.name "lpx0312"
-          git config user.email "lpx_0312@163.com"
-          git add .
-          git commit -m "update jenkins versions" || echo "no changes"
-          git push https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/lpx0312/jenkins-version-all.git HEAD:master
+      #- name: Commit & Push
+      #  run: |
+      #    git config user.name "lpx0312"
+      #    git config user.email "lpx_0312@163.com"
+      #    git add .
+      #    git commit -m "update jenkins versions" || echo "no changes"
+      #    git push https://x-access-token:${{ secrets.GIT_TOKEN }}@github.com/lpx0312/jenkins-version-all.git HEAD:main
     
     
-      #- name: Push
-      #  uses: github-actions-x/commit@v2.9
-      #  with:
-      #    github-token: ${{ secrets.GIT_TOKEN }}
-      #    push-branch: 'master'
-      #    commit-message: 'This is a github action commit.'
-      #    name: lpx0312
-      #    email: lpx_0312@163.com
-      #    force-add: 'true'
-      #    force-push: 'true'
+      - name: Push
+        uses: github-actions-x/commit@v2.9
+        with:
+          github-token: ${{ secrets.GIT_TOKEN }}
+          push-branch: 'main'
+          commit-message: 'This is a github action commit.'
+          name: lpx0312
+          email: lpx_0312@163.com
+          force-add: 'true'
+          force-push: 'true'
